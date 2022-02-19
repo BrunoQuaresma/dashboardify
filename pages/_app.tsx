@@ -35,18 +35,20 @@ const usePageView = () => {
       return;
     }
 
-    const handleRouteChange = (url: string) => {
+    const pageView = (url?: string) => {
       analytics.page({
         // We don't want to track the query params to not track the JSON schema URLs
         // It is a privacy concern
-        url: url.split("?")[0],
+        url: url ? url.split("?")[0] : undefined,
       });
     };
 
-    router.events.on("routeChangeComplete", handleRouteChange);
+    pageView();
+
+    router.events.on("routeChangeComplete", pageView);
 
     return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
+      router.events.off("routeChangeComplete", pageView);
     };
   }, [router.events]);
 };
