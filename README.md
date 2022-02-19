@@ -100,7 +100,7 @@ Sections are how Dashboardify groups information. You can have everything in the
 |-----------|------------------------------|----------|
 | title     | String                       | Yes      |
 | stats     | Array of [Stat](#Stat)       | No       |
-| table     | Table                        | No       |
+| table     | [Table](#Table)              | No       |
 
 ### Stat
 
