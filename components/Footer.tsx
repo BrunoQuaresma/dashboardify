@@ -1,5 +1,6 @@
 import { Box, Link } from "@chakra-ui/react";
 import React from "react";
+import { GITHUB_URL } from "../constants";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -16,11 +17,7 @@ export const Footer = () => {
         Bruno Quaresma
       </Link>{" "}
       and available on{" "}
-      <Link
-        target="_blank"
-        rel="noreferrer"
-        href="https://github.com/BrunoQuaresma/dashboardify"
-      >
+      <Link target="_blank" rel="noreferrer" href={GITHUB_URL}>
         GitHub
       </Link>
     </Box>

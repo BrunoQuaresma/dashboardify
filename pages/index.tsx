@@ -1,12 +1,13 @@
-import { Box, Container, Link, Heading } from "@chakra-ui/react";
+import { Box, Container, Link, Heading, Center, Icon } from "@chakra-ui/react";
 import React from "react";
 import { SearchForm } from "../components/SearchForm";
 import NextLink from "next/link";
 import { Logo } from "../components/Logo";
 import { Doc } from "../components/Doc";
-import { SEO_URL, SITE_URL } from "../constants";
+import { GITHUB_URL, SEO_URL, SITE_URL } from "../constants";
 import Head from "next/head";
 import { Footer } from "../components/Footer";
+import { FiGithub } from "react-icons/fi";
 
 const SEO_TITLE = "Create dashboards using JSON - Dashboardify";
 const SEO_DESCRIPTION =
@@ -34,6 +35,26 @@ export const HomePage = () => {
 
       <Container maxW="container.lg" py={[10, 20]} px={5}>
         <Box maxW="container.lg">
+          <Link
+            href={GITHUB_URL}
+            target="_blank"
+            rel="noreferrer"
+            position="fixed"
+            top={0}
+            right={0}
+            title="See the project on GitHub"
+          >
+            <Center
+              h={10}
+              w={10}
+              bg="black"
+              color="white"
+              roundedBottomLeft="md"
+            >
+              <Icon as={FiGithub} />
+            </Center>
+          </Link>
+
           <Box mb={[4, 10]}>
             <Logo />
           </Box>
