@@ -4,7 +4,7 @@ import {
   Container,
   Flex,
   Heading,
-  Icon,
+  HStack,
   Spinner,
   Text,
   VStack,
@@ -13,13 +13,14 @@ import { useMachine } from "@xstate/react";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { FiClock } from "react-icons/fi";
 import { Footer } from "../components/Footer";
 import { SearchForm } from "../components/SearchForm";
 import { Stats } from "../components/dashboard/Stats";
 import { dashboardMachine } from "../machines/dashboardMachine";
 import { Table } from "../components/dashboard/Table";
 import Head from "next/head";
+import { LogoIcon } from "../components/LogoIcon";
+import NextLink from "next/link";
 
 const StatsPage: NextPage = () => {
   const router = useRouter();
@@ -42,29 +43,19 @@ const StatsPage: NextPage = () => {
       <Flex bg="gray.50" flexDir="column" flex="1">
         <Box as="header" py={4}>
           <Container maxW="container.xl">
-            <SearchForm
-              inputProps={{ defaultValue: url }}
-              inputGroupProps={{ bg: "white" }}
-            />
+            <HStack spacing={4} pl={4}>
+              <NextLink passHref href="/">
+                <a title="Back to Dashboardify home">
+                  <LogoIcon h="full" fontSize="2xl" />
+                </a>
+              </NextLink>
 
-            {context.lastUpdate && (
-              <Flex
-                mt={4}
-                display="inline-flex"
-                alignItems="center"
-                title="It is updated every 5 minutes."
-                background="gray.200"
-                p={2}
-                pr={4}
-                rounded="full"
-                lineHeight={0}
-                fontSize="sm"
-                color="gray.900"
-              >
-                <Icon as={FiClock} fontSize="xs" mr={2} />
-                Last update at {context.lastUpdate.toLocaleTimeString()}
-              </Flex>
-            )}
+              <SearchForm
+                inputProps={{ defaultValue: url }}
+                inputGroupProps={{ bg: "white" }}
+                formProps={{ w: "full" }}
+              />
+            </HStack>
           </Container>
         </Box>
 
