@@ -10,6 +10,7 @@ import {
   Box,
 } from "@chakra-ui/react";
 import React from "react";
+import { formatValue } from "../../libs/format";
 import { Table as TableType } from "../../types";
 
 export const Table: React.FC<{ table: TableType }> = ({ table }) => {
@@ -29,7 +30,7 @@ export const Table: React.FC<{ table: TableType }> = ({ table }) => {
           {table.data.map((row, index) => (
             <Tr key={index}>
               {row.map((value, indexRow) => (
-                <Td key={indexRow}>{value}</Td>
+                <Td key={indexRow}>{formatValue(value)}</Td>
               ))}
             </Tr>
           ))}

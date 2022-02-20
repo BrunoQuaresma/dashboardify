@@ -7,15 +7,8 @@ import {
   Text,
 } from "@chakra-ui/react";
 import React from "react";
+import { formatValue } from "../../libs/format";
 import { Stat } from "../../types";
-
-function formatValue(value: string | number) {
-  if (typeof value === "number") {
-    return value.toLocaleString();
-  }
-
-  return value;
-}
 
 export const Stats: React.FC<{ stats: Array<Stat> }> = ({ stats }) => {
   return (
