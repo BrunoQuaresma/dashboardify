@@ -26,14 +26,23 @@ export const Stats: React.FC<{ stats: Array<Stat> }> = ({ stats }) => {
     >
       {stats.map((stat, i) => (
         <Box key={i} shadow="sm" p={[4, 6]} rounded="md" w="full" bg="white">
-          <StatComponent>
+          <StatComponent
+            sx={{
+              dl: {
+                display: { base: "flex", md: "initial" },
+                w: "full",
+                flexDir: "row-reverse",
+                alignItems: "center",
+              },
+            }}
+          >
             <StatNumber
               fontWeight="light"
               fontSize={["2xl", "4xl"]}
               lineHeight={[null, "shorter"]}
             >
               {stat.prefix && (
-                <Text as="span" fontSize="2xl" mr={1}>
+                <Text as="span" fontSize={["lg", "2xl"]} mr={1}>
                   {stat.prefix}
                 </Text>
               )}
@@ -44,6 +53,7 @@ export const Stats: React.FC<{ stats: Array<Stat> }> = ({ stats }) => {
               color="gray.600"
               fontSize={[null, "md"]}
               mt={1}
+              mr="auto"
             >
               {stat.label}
             </StatLabel>

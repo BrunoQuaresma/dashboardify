@@ -81,7 +81,7 @@ const StatsPage: NextPage = () => {
             )}
 
             {context.schema && (
-              <VStack mt={8} spacing={16}>
+              <VStack mt={8} spacing={[12, 16]}>
                 {context.schema.sections.map((section) => (
                   <Box
                     w="full"
@@ -90,9 +90,9 @@ const StatsPage: NextPage = () => {
                     id={encodeURI(section.title.toLowerCase())}
                   >
                     <Heading
-                      ml={6}
                       as="h2"
-                      mb={4}
+                      ml={[4, 6]}
+                      mb={[2, 4]}
                       fontSize="lg"
                       fontWeight="regular"
                     >
