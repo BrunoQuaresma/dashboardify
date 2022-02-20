@@ -19,7 +19,7 @@ export const LineChart: React.FC<{ chart: LineChartType }> = ({ chart }) => {
         {chart.label}
       </Heading>
 
-      <Box p={{ base: 0, md: 6 }} pt={0} w="full" flex="1">
+      <Box p={{ base: 0, md: 6 }} pt={{ base: 0, md: 0 }} w="full" flex="1">
         <ResponsiveLine
           animate
           enablePoints={!isSimple}
