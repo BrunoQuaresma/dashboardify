@@ -6,6 +6,46 @@ const exampleHandler: NextApiHandler<DashboardSchema> = (_req, res) => {
     sections: [
       {
         title: "Users",
+        chart: {
+          label: "Last 7 days sign ups",
+          type: "line",
+          lines: [
+            {
+              id: "Sign ups",
+              color: "#00B5D8",
+              data: [
+                {
+                  y: 230,
+                  x: "14-02",
+                },
+                {
+                  y: 450,
+                  x: "15-02",
+                },
+                {
+                  y: 874,
+                  x: "16-02",
+                },
+                {
+                  y: 310,
+                  x: "17-02",
+                },
+                {
+                  y: 240,
+                  x: "18-02",
+                },
+                {
+                  y: 150,
+                  x: "19-02",
+                },
+                {
+                  y: 675,
+                  x: "20-02",
+                },
+              ],
+            },
+          ],
+        },
         stats: [
           {
             label: "Total",

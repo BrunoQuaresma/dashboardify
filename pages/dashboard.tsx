@@ -21,6 +21,7 @@ import { Table } from "../components/dashboard/Table";
 import Head from "next/head";
 import { LogoIcon } from "../components/LogoIcon";
 import NextLink from "next/link";
+import { LineChart } from "../components/dashboard/LineChart";
 
 const StatsPage: NextPage = () => {
   const router = useRouter();
@@ -97,8 +98,12 @@ const StatsPage: NextPage = () => {
                     >
                       {section.title}
                     </Heading>
-                    {section.stats && <Stats stats={section.stats} />}
-                    {section.table && <Table table={section.table} />}
+
+                    <VStack spacing={3}>
+                      {section.chart && <LineChart chart={section.chart} />}
+                      {section.stats && <Stats stats={section.stats} />}
+                      {section.table && <Table table={section.table} />}
+                    </VStack>
                   </Box>
                 ))}
               </VStack>

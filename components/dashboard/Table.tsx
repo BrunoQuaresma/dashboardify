@@ -14,7 +14,7 @@ import { Table as TableType } from "../../types";
 
 export const Table: React.FC<{ table: TableType }> = ({ table }) => {
   return (
-    <Box shadow="sm" rounded="lg" overflow="auto" bg="white" mt={4}>
+    <Box shadow="sm" rounded="lg" overflow="auto" bg="white" mt={4} w="full">
       <TableComponent variant="simple">
         <Thead>
           <Tr>

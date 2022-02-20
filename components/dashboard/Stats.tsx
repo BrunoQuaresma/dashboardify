@@ -19,7 +19,11 @@ function formatValue(value: string | number) {
 
 export const Stats: React.FC<{ stats: Array<Stat> }> = ({ stats }) => {
   return (
-    <Grid gap={3} gridTemplateColumns={["1fr", null, "repeat(4, 1fr)"]}>
+    <Grid
+      gap={3}
+      gridTemplateColumns={["1fr", null, "repeat(4, 1fr)"]}
+      w="full"
+    >
       {stats.map((stat, i) => (
         <Box key={i} shadow="sm" p={[4, 6]} rounded="md" w="full" bg="white">
           <StatComponent>

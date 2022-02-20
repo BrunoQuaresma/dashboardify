@@ -15,10 +15,34 @@ const Table = z.object({
 
 export type Table = z.infer<typeof Table>;
 
+export const LineChart = z.object({
+  label: z.string(),
+  type: z.literal("line"),
+  lines: z.array(
+    z.object({
+      id: z.string(),
+      color: z.string(),
+      data: z.array(
+        z.object({
+          y: z.number(),
+          x: z.string(),
+        })
+      ),
+    })
+  ),
+});
+
+export type LineChart = z.infer<typeof LineChart>;
+
+export const Chart = LineChart;
+
+export type Chart = z.infer<typeof Chart>;
+
 export const Section = z.object({
   title: z.string(),
   stats: z.array(Stat).optional(),
   table: Table.optional(),
+  chart: Chart.optional(),
 });
 
 export type Section = z.infer<typeof Section>;
