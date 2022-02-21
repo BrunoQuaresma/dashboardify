@@ -4,18 +4,23 @@ export interface Typegen0 {
   "@@xstate/typegen": true;
   eventsCausingActions: {
     assignUrl: "START";
-    assignSchema: "done.invoke.stats.loading:invocation[0]";
+    assignSchema: "done.invoke.dashboard.loading:invocation[0]";
+    assingError: "error.platform.dashboard.loading:invocation[0]";
   };
   internalEvents: {
-    "done.invoke.stats.loading:invocation[0]": {
-      type: "done.invoke.stats.loading:invocation[0]";
+    "done.invoke.dashboard.loading:invocation[0]": {
+      type: "done.invoke.dashboard.loading:invocation[0]";
       data: unknown;
       __tip: "See the XState TS docs to learn how to strongly type this.";
+    };
+    "error.platform.dashboard.loading:invocation[0]": {
+      type: "error.platform.dashboard.loading:invocation[0]";
+      data: unknown;
     };
     "xstate.init": { type: "xstate.init" };
   };
   invokeSrcNameMap: {
-    fetchDashboard: "done.invoke.stats.loading:invocation[0]";
+    fetchDashboard: "done.invoke.dashboard.loading:invocation[0]";
   };
   missingImplementations: {
     actions: never;
@@ -30,10 +35,10 @@ export interface Typegen0 {
   eventsCausingDelays: {};
   matchesStates:
     | "notStarted"
+    | "notStarted.idle"
+    | "notStarted.error"
     | "loading"
-    | "idle"
-    | "idle.loaded"
-    | "idle.error"
-    | { idle?: "loaded" | "error" };
+    | "loaded"
+    | { notStarted?: "idle" | "error" };
   tags: never;
 }

@@ -6,13 +6,14 @@ type DashboardMachineContext = {
   url?: string;
   schema?: DashboardSchema;
   lastUpdate?: Date;
+  error?: unknown;
 };
 
 type DashboardMachineEvent = { type: "START"; url: string };
 
 export const dashboardMachine = createMachine(
   {
-    id: "stats",
+    id: "dashboard",
     initial: "notStarted",
     schema: {
       events: {} as DashboardMachineEvent,
@@ -26,29 +27,32 @@ export const dashboardMachine = createMachine(
     tsTypes: {} as import("./dashboardMachine.typegen").Typegen0,
     states: {
       notStarted: {
+        initial: "idle",
         on: {
           START: {
             target: "loading",
             actions: ["assignUrl"],
           },
         },
+        states: {
+          idle: {},
+          error: {},
+        },
       },
       loading: {
         invoke: {
           src: "fetchDashboard",
           onDone: {
-            target: "idle.loaded",
+            target: "loaded",
             actions: ["assignSchema"],
           },
-          onError: "idle.error",
+          onError: {
+            target: "notStarted.error",
+            actions: ["assingError"],
+          },
         },
       },
-      idle: {
-        states: {
-          loaded: {},
-          error: {},
-        },
-      },
+      loaded: {},
     },
   },
   {
@@ -59,7 +63,7 @@ export const dashboardMachine = createMachine(
         }
 
         if (!ctx.url) {
-          throw new Error("No URL assigned to fetch the stats.");
+          throw new Error("No URL assigned to fetch the dashboard.");
         }
 
         return fetchDashboard(ctx.url);
@@ -72,6 +76,9 @@ export const dashboardMachine = createMachine(
       }),
       assignUrl: assign({
         url: (_ctx, event) => event.url,
+      }),
+      assingError: assign({
+        error: (_ctx, event) => event.data,
       }),
     },
   }

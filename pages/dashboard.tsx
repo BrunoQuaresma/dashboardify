@@ -6,7 +6,6 @@ import {
   Heading,
   HStack,
   Spinner,
-  Text,
   VStack,
 } from "@chakra-ui/react";
 import { useMachine } from "@xstate/react";
@@ -22,6 +21,7 @@ import Head from "next/head";
 import { LogoIcon } from "../components/LogoIcon";
 import NextLink from "next/link";
 import { LineChart } from "../components/dashboard/LineChart";
+import { Error } from "../components/dashboard/Error";
 
 const StatsPage: NextPage = () => {
   const router = useRouter();
@@ -62,17 +62,7 @@ const StatsPage: NextPage = () => {
 
         <Container maxW="container.xl" flex="1">
           <Box h="full" mt={[2, 8]}>
-            {matches("idle.error") && (
-              <Box h="full" maxW="container.sm">
-                <Heading as="h2" mb={4}>
-                  Oops
-                </Heading>
-                <Text as="span">
-                  Something went wrong and we are not able to load your stats.
-                  Please, check if the URL is correct and your JSON is valid.
-                </Text>
-              </Box>
-            )}
+            {matches("notStarted.error") && <Error error={context.error} />}
 
             {matches("loading") && !context.schema && (
               <Center h="full">

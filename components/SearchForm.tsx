@@ -28,7 +28,7 @@ export const SearchForm: React.FC<SearchForm> = ({
         <InputLeftElement>
           <Icon as={FiSearch} />
         </InputLeftElement>
-        <Input type="url" name="url" {...inputProps} />
+        <Input type="url" name="url" required {...inputProps} />
       </InputGroup>
     </Box>
   );

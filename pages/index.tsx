@@ -88,7 +88,10 @@ export const HomePage = () => {
 
           <Box mt={[2, 6]} fontSize={["sm", "lg"]} color="gray.600">
             Want to see how it looks like?{" "}
-            <NextLink passHref href={`/dashboard?url=${SITE_URL}/api/example`}>
+            <NextLink
+              passHref
+              href={`/dashboard?url=${SITE_URL}/api/examples/simple`}
+            >
               <Link>Try an example</Link>
             </NextLink>
           </Box>
