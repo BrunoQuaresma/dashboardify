@@ -3,7 +3,9 @@ import { LineChart as LineChartType } from "../../types";
 import { ResponsiveLine } from "@nivo/line";
 import { Box, Flex, Heading, useBreakpointValue } from "@chakra-ui/react";
 
-export const LineChart: React.FC<{ chart: LineChartType }> = ({ chart }) => {
+export type LineChartProps = { chart: LineChartType };
+
+export const LineChart: React.FC<LineChartProps> = ({ chart }) => {
   const isSimple = useBreakpointValue({ base: true, md: false });
 
   return (

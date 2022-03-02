@@ -10,9 +10,11 @@
   "dependencies": {
     "@analytics/google-analytics": "^0.5.3",
     "@chakra-ui/react": "^1.8.3",
+    "@codemirror/lang-json": "^0.19.2",
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
     "@nivo/line": "^0.79.1",
+    "@uiw/react-codemirror": "^4.5.1",
     "@xstate/react": "^2.0.0",
     "analytics": "^0.8.0",
     "framer-motion": "^6.2.6",

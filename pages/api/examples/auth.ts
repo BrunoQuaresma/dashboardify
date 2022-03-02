@@ -1,5 +1,5 @@
 import { NextApiHandler } from "next";
-import { exampleData } from "../../../libs/fakeData";
+import { exampleData } from "../../../libs/example";
 import { DashboardSchema } from "../../../types";
 
 type ApiError = { message: string };

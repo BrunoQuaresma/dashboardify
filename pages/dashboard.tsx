@@ -3,10 +3,8 @@ import {
   Center,
   Container,
   Flex,
-  Heading,
   HStack,
   Spinner,
-  VStack,
 } from "@chakra-ui/react";
 import { useMachine } from "@xstate/react";
 import type { NextPage } from "next";
@@ -14,14 +12,12 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { Footer } from "../components/Footer";
 import { SearchForm } from "../components/SearchForm";
-import { Stats } from "../components/dashboard/Stats";
 import { dashboardMachine } from "../machines/dashboardMachine";
-import { Table } from "../components/dashboard/Table";
 import Head from "next/head";
 import { LogoIcon } from "../components/LogoIcon";
 import NextLink from "next/link";
-import { LineChart } from "../components/dashboard/LineChart";
 import { Error } from "../components/dashboard/Error";
+import { Dashboard } from "../components/dashboard/Dashboard";
 
 const DashboardPage: NextPage = () => {
   const router = useRouter();
@@ -70,34 +66,7 @@ const DashboardPage: NextPage = () => {
               </Center>
             )}
 
-            {context.schema && (
-              <VStack mt={8} spacing={[12, 16]}>
-                {context.schema.sections.map((section) => (
-                  <Box
-                    w="full"
-                    as="section"
-                    key={section.title}
-                    id={encodeURI(section.title.toLowerCase())}
-                  >
-                    <Heading
-                      as="h2"
-                      ml={[4, 6]}
-                      mb={[2, 4]}
-                      fontSize="lg"
-                      fontWeight="regular"
-                    >
-                      {section.title}
-                    </Heading>
-
-                    <VStack spacing={3}>
-                      {section.chart && <LineChart chart={section.chart} />}
-                      {section.stats && <Stats stats={section.stats} />}
-                      {section.table && <Table table={section.table} />}
-                    </VStack>
-                  </Box>
-                ))}
-              </VStack>
-            )}
+            {context.schema && <Dashboard schema={context.schema} />}
           </Box>
         </Container>
 
