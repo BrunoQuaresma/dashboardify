@@ -23,7 +23,7 @@ import NextLink from "next/link";
 import { LineChart } from "../components/dashboard/LineChart";
 import { Error } from "../components/dashboard/Error";
 
-const StatsPage: NextPage = () => {
+const DashboardPage: NextPage = () => {
   const router = useRouter();
   const url = router.query.url as string | undefined;
   const [{ context, matches }, send] = useMachine(dashboardMachine);
@@ -107,4 +107,4 @@ const StatsPage: NextPage = () => {
   );
 };
 
-export default StatsPage;
+export default DashboardPage;
