@@ -5,6 +5,7 @@ import { json } from "@codemirror/lang-json";
 import { exampleDataStr } from "../libs/example";
 import { Dashboard } from "../components/dashboard/Dashboard";
 import { DashboardSchema } from "../types";
+import Head from "next/head";
 
 const usePreviousValidSchema = (schemaStr: string) => {
   const prevSchema = useRef<DashboardSchema>();
@@ -31,24 +32,30 @@ export const PlaygroundPage = () => {
   }, [prevSchema, schemaStr]);
 
   return (
-    <Grid bgColor="gray.50" gridTemplateColumns="1fr 1fr" h="100vh">
-      <Box w="full" h="100vh" borderRightWidth={1}>
-        <CodeMirror
-          value={schemaStr}
-          style={{ height: "100%", overflow: "auto" }}
-          width="100%"
-          height="100%"
-          extensions={[json()]}
-          onChange={(value) => {
-            setSchemaStr(value);
-          }}
-        />
-      </Box>
+    <>
+      <Head>
+        <title>Playground - Dashboardify</title>
+      </Head>
 
-      <Box w="full" h="full" overflow="auto" p={2}>
-        {schema && <Dashboard schema={schema} />}
-      </Box>
-    </Grid>
+      <Grid bgColor="gray.50" gridTemplateColumns="1fr 1fr" h="100vh">
+        <Box w="full" h="100vh" borderRightWidth={1}>
+          <CodeMirror
+            value={schemaStr}
+            style={{ height: "100%", overflow: "auto" }}
+            width="100%"
+            height="100%"
+            extensions={[json()]}
+            onChange={(value) => {
+              setSchemaStr(value);
+            }}
+          />
+        </Box>
+
+        <Box w="full" h="full" overflow="auto" p={2}>
+          {schema && <Dashboard schema={schema} />}
+        </Box>
+      </Grid>
+    </>
   );
 };
 
